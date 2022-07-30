@@ -1,0 +1,36 @@
+@import '@/assets/styles/scss/rules/mixins/theme';
+@import '@/assets/styles/scss/rules/function/component-theme';
+
+//default
+@import '@/assets/styles/variables-theme/default';
+
+@import '@/assets/styles/_variables';
+
+//mixins
+@import '@/assets/styles/scss/rules/mixins/base';
+@import '@/assets/styles/scss/rules/mixins/animation/animate';
+
+@import '@/assets/styles/scss/base/base';
+
+@import '@/assets/styles/scss/layout/layout';
+
+//component
+@import '@/assets/styles/scss/component/com-cell';
+@import '@/assets/styles/scss/component/btn';
+@import '@/assets/styles/scss/component/popup';
+@import '@/assets/styles/scss/component/toast';
+@import '@/assets/styles/scss/component/alert';
+@import '@/assets/styles/scss/component/tabs';
+@import '@/assets/styles/scss/component/avatar';
+@import '@/assets/styles/scss/component/el-switch';
+@import '@/assets/styles/scss/component/el-radio';
+@import '@/assets/styles/scss/component/el-menu';
+@import '@/assets/styles/scss/component/el-message';
+@import '@/assets/styles/scss/component/el-checkbox';
+
+//page
+@import '@/assets/styles/scss/pages/login/entry'; // 登入/註冊/忘記密碼
+@import '@/assets/styles/scss/pages/chat/chat';
+@import '@/assets/styles/scss/pages/chat/chat-side'; // 側欄
+@import '@/assets/styles/scss/pages/chat/wcr-system'; // 系統/警示/公告資訊
+@import '@/assets/styles/scss/pages/chat/my'; // 我的

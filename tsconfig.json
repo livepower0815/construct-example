@@ -1,0 +1,50 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".", // 非绝对地址的模块会基于这个目录去解析，默认值是当前目录
+    "target": "esnext",
+    "useDefineForClassFields": true,
+    "module": "esnext",
+    "moduleResolution": "node", // 指定模块解析策略，'node' 用于 Node.js 的 CommonJS 实现
+    "strict": true,
+    "jsx": "preserve",
+    // "allowJs": true, // 允许编译器编译JS，JSX文件
+    // "checkJs": true,
+    "sourceMap": true, // 生成目标文件的 sourceMap 文件
+    "resolveJsonModule": true, // 允许导入带有“.json”扩展名的模块
+    "esModuleInterop": true, // CommonJS/AMD/UMD 模块导入兼容
+    "skipLibCheck": true, // 跳过库声明文件的类型检查
+    "noImplicitAny": false,
+    "useUnknownInCatchVariables": false,
+    // ========================================================================================================
+    // 因為無法支援這種變數定義的檢查。建議在 tsconfig.json 中新增以下配置，使 tsc 編譯過程能夠檢查出定義了未使用的變數：
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    // ========================================================================================================
+    "lib": [
+      "dom",
+      "esnext"
+    ], // 编译时引入的 ES 功能库
+    "types": [
+      "vite/client"
+    ], // 指定加载【哪些】声明文件包，如不设置此项，默认会加载全部能找到的 node_modules/@types/xxx 包
+    // "vite/client"用于 vite 项目中的一些类型定义补充，https://www.typescriptlang.org/tsconfig#types
+    "isolatedModules": true, // https://cn.vitejs.dev/guide/features.html#typescript-compiler-options
+    "paths": {
+      // 配置具体如何解析 require/import 的导入，值是基于 baseUrl 路径的映射列表。https://www.typescriptlang.org/tsconfig#paths
+      "@/*": [
+        "src/*"
+      ]
+    }
+  },
+  "include": [
+    "vite.config.ts",
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.vue",
+    "types/*.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

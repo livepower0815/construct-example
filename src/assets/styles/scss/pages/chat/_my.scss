@@ -1,0 +1,330 @@
+.my-content {
+  .chat-info {
+    &__chat-name {
+      .chat-name {
+        height: 48px;
+        padding: 0 $space-lg;
+        &__start {
+          flex: 1;
+          height: 100%;
+          display: flex;
+          align-items: center;
+        }
+        &__group {
+          width: 100%;
+          height: 100%;
+        }
+        &__head {
+          text-align: center;
+          flex: 1;
+        }
+        &__icon {
+          margin-left: auto;
+        }
+        &__input {
+          padding-top: 0;
+          padding-bottom: 0;
+          height: 100%;
+        }
+      }
+    }
+  }
+  .my-content-list {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid var(--c-07-neutral-neutral-900-10);
+    &__item {
+      position: relative;
+      cursor: pointer;
+      flex: none;
+      & + .my-content-list__item {
+        &::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: $space-lg;
+          right: $space-lg;
+          display: block;
+          height: 1px;
+          background-color: var(--c-07-neutral-neutral-900-10);
+        }
+      }
+    }
+    &__group {
+      display: flex;
+      align-items: center;
+      position: relative;
+      height: 56px;
+      overflow: hidden;
+      padding: $space-lg;
+    }
+    &__icon {
+      flex: none;
+      &__img {
+        width: 24px;
+        height: 24px;
+        mask-repeat: no-repeat;
+        mask-position: center;
+        mask-size: contain;
+        background-color: var(--c-07-neutral-neutral-800);
+        &.-group-add {
+          mask-image: url('@design/icon/icon_icon_groupadd_fill@2x.png');
+        }
+        &.-user-add {
+          mask-image: url('@design/icon/icon_icon_user_add@2x.png');
+        }
+        &.-notification {
+          mask-image: url('@design/icon/icon_icon_notification@2x.png');
+        }
+        &.-password {
+          mask-image: url('@design/icon/icon_icon_password_alt_1@2x.png');
+        }
+        &.-blacklist {
+          mask-image: url('@design/icon/icon_icon_black_list@2x.png');
+        }
+        &.-share {
+          mask-image: url('@design/icon/icon_icon_share@2x.png');
+        }
+        &.-about {
+          mask-image: url('@design/icon/icon_icon_attention@2x.png');
+        }
+      }
+      & + .my-content-list__name {
+        padding-left: $space-lg;
+      }
+    }
+    &__name {
+      overflow: hidden;
+      &__text {
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--c-10-grand-grand-1);
+        margin: 0;
+      }
+      &:not(:last-child) {
+        padding-right: $space-lg;
+      }
+    }
+  }
+  @media (min-width: 749px) {
+    width: 30%;
+    max-width: inherit;
+  }
+  @media (max-width: 1280px) {
+    width: 40%;
+    min-width: 300px;
+  }
+}
+.my-blacklist {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  height: 100%;
+  .chat-view__item-group {
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: $space-lg;
+      right: $space-lg;
+      height: 1px;
+      margin: auto;
+      background-color: var(--c-07-neutral-neutral-900-10);
+    }
+  }
+  .chat-member-list {
+    overflow-y: auto;
+  }
+}
+.my-security {
+  .ui-tableviewcell {
+    &__text {
+      flex: none;
+    }
+    &__detail {
+      overflow: hidden;
+      flex: 1;
+      justify-content: flex-end;
+    }
+  }
+  .detail__text {
+    @include text-ellipsis;
+  }
+}
+.my-share {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  &__link {
+    display: flex;
+    align-items: flex-start;
+    padding: $space-sm $space-lg;
+    width: 100%;
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background-color: var(--c-07-neutral-neutral-900-10);
+    }
+    .link-text {
+      flex: 1;
+      margin: 0;
+      font-size: 16px;
+      color: var(--c-03-tertiary-tertiary-0-500);
+      font-weight: 500;
+      word-break: break-all;
+      padding-top: 0;
+      & + .btn {
+        margin-left: $space-lg;
+      }
+      &:not(:last-child) {
+        padding-top: $space-sm;
+      }
+    }
+    .btn {
+      width: 56px;
+      flex: none;
+    }
+  }
+}
+
+.my-about {
+  .ui-tableviewcell {
+    &:first-child + .ui-tableviewcell {
+      &:before {
+        display: none;
+      }
+    }
+  }
+}
+.my-add-friend {
+  &__my-account {
+    .my-account {
+      display: flex;
+      align-items: flex-start;
+      padding: $space-lg;
+      &__head {
+        flex: none;
+        &__text {
+          font-size: 16px;
+          margin: 0;
+          font-weight: 600;
+          color: var(--c-10-grand-grand-1);
+        }
+        & + .my-account__result {
+          padding-left: $space-sm;
+        }
+      }
+      &__result {
+        &__text {
+          padding-top: $space-xxs;
+          font-size: 14px;
+          margin: 0;
+          font-weight: 500;
+          color: var(--c-07-neutral-neutral-400);
+          word-break: break-all;
+        }
+      }
+    }
+  }
+  &__search-result {
+    .search-result-empty,
+    .search-result-tip {
+      font-size: 16px;
+      margin: 0;
+      font-weight: 600;
+      color: var(--c-08-black-black);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding: 0 $space-lg;
+      &__text {
+        margin: 0;
+        padding: $space-lg 0;
+      }
+    }
+  }
+  .chat-list-search {
+    &__text {
+      flex: none;
+      font-size: 14px;
+      margin: 0;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      cursor: pointer;
+      padding-left: $space-lg;
+      color: var(--c-01-primary-primary-0-500);
+      &.-disabled {
+        color: var(--c-07-neutral-neutral-400);
+        pointer-events: none;
+      }
+    }
+  }
+}
+
+.my-add-group {
+  .chat-member-select {
+    background: none;
+    height: 408px;
+    &__item {
+      .chat-member-tag {
+        background-color: var(--c-07-neutral-neutral-100);
+      }
+    }
+  }
+}
+.my-add-group,
+.my-add-member {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  .chat-list-search {
+    border-bottom: 1px solid var(--c-08-black-black-10);
+  }
+  .chat-info {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    &__avatar {
+      & + .chat-info__chat-name {
+        padding-left: $space-lg;
+      }
+    }
+    &__chat-name {
+      padding-top: 0;
+      .chat-name {
+        padding-left: $space-lg;
+        padding-right: $space-lg;
+      }
+    }
+  }
+}
+.my-add-member {
+  &__header {
+    flex: none;
+  }
+  &__body {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+  .chat-member-select {
+    & + .chat-member-list {
+      border-top: 1px solid var(--c-07-neutral-neutral-0);
+    }
+  }
+}
+.my-add-friend,
+.my-blacklist {
+  .chat-list-search {
+    border-bottom: 1px solid var(--c-08-black-black-10);
+  }
+}

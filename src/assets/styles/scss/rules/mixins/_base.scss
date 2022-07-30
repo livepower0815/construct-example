@@ -1,0 +1,193 @@
+//@include
+
+@mixin scrolling--touch {
+  -webkit-overflow-scrolling: touch;
+}
+
+//ellipsis
+@mixin text-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+//clearfix
+@mixin clearfix {
+  overflow: hidden;
+}
+
+//legacy-pie-clearfix
+@mixin legacy-pie-clearfix {
+  &:after {
+    content: ' ';
+    display: block;
+    line-height: 0;
+    height: 0;
+    font-size: 0;
+    visibility: hidden;
+    clear: both;
+  }
+}
+
+//vertical
+@mixin after-v {
+  &:after {
+    content: '';
+    width: 0;
+    height: 100%;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+  }
+}
+
+@mixin table-v {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+// @include position-v(0, 0, 0, 0);
+@mixin position-v($top, $right, $bottom, $left) {
+  position: absolute;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+  margin: auto;
+}
+
+//border
+// @include border(0.5, 0, 0, 0, 0, solid, #ccc);
+@mixin border($width, $top, $right, $bottom, $left, $style, $color) {
+  position: relative;
+
+  &:after {
+    content: '';
+    pointer-events: none;
+    box-sizing: border-box;
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    bottom: -50%;
+    left: -50%;
+    transform: scale($width);
+    border-top-width: ($top * 2) + px;
+    border-right-width: ($right * 2) + px;
+    border-bottom-width: ($bottom * 2) + px;
+    border-left-width: ($left * 2) + px;
+    border-style: $style;
+    border-color: $color;
+  }
+}
+
+//action-sheets
+@mixin action-sheets($direction: $direction, $bg-color: $white, $space: 90%) {
+  .action-sheets {
+    .popup {
+      overflow: hidden;
+      background-color: $bg-color;
+      position: fixed;
+      margin: auto;
+      z-index: 2010;
+      &__body {
+        padding: 0 $space-lg;
+        position: relative;
+        z-index: 1;
+      }
+
+      @if ($direction == 'bottom') {
+        &--#{$direction} {
+          border-radius: 20px 20px 0 0;
+          bottom: 0;
+          right: 0;
+          left: 0;
+          width: 100%;
+          transition: 0.4s;
+          @include slide-handle-close($direction) {
+            right: $space-lg;
+            top: $space-lg;
+          }
+        }
+      }
+    }
+    .popup-overlay {
+      z-index: 1900;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+//Staggered Animation
+//html 項目內容上需要寫style="--animation-order: 數字 "
+@mixin animation-order($name: zoomIn, $duration: 700ms, $fill-mode: both, $timing-function: ease-in-out, $delay: 100ms) {
+  animation-name: $name;
+  animation-duration: $duration;
+  animation-fill-mode: $fill-mode;
+  animation-timing-function: $timing-function;
+  animation-delay: calc(var(--animation-order) * #{$delay});
+}
+
+@mixin editor-setting {
+  word-wrap: break-word;
+  word-break: break-all;
+  p {
+    margin-top: 0;
+  }
+  img {
+    width: 100%;
+    display: block;
+  }
+}
+@mixin input-title {
+  font-size: 12px;
+  font-weight: 500;
+}
+@mixin input-placholder {
+  color: var(--c-10-grand-grand-1);
+  caret-color: var(--c-07-neutral-neutral-400);
+  font-size: 16px;
+  font-weight: 500;
+  &:-webkit-autofill {
+    box-shadow: 0 0 0 1000px var(--c-07-neutral-neutral-100) inset;
+    background-color: transparent;
+  }
+  &::-webkit-input-placeholder {
+    color: var(--c-07-neutral-neutral-400);
+    font-size: 16px;
+    @content;
+  }
+  &:-moz-placeholder {
+    color: var(--c-07-neutral-neutral-400);
+    font-size: 16px;
+    @content;
+  }
+  &::-o-placeholder {
+    color: var(--c-07-neutral-neutral-400);
+    font-size: 16px;
+    @content;
+  }
+  &:-ms-input-placeholder {
+    color: var(--c-07-neutral-neutral-400);
+    font-size: 16px;
+    @content;
+  }
+}
+//清除input自動完成背景色
+@mixin autofill($bg-color: var(--c-07-neutral-neutral-100)) {
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    box-shadow: 0 0 0 30px $bg-color inset !important;
+    height: 0;
+  }
+}

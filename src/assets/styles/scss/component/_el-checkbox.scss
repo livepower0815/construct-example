@@ -1,0 +1,93 @@
+.el-checkbox {
+  display: flex;
+  align-items: center;
+  position: relative;
+  .el-checkbox-input {
+    display: none;
+
+    & ~ .el-checkbox-style {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      &:before {
+        content: '';
+        border-radius: $bod-circle;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        border: 1px solid var(--c-07-neutral-neutral-400);
+        background-color: var(--c-07-neutral-neutral-50);
+        box-sizing: border-box;
+      }
+      &:after {
+        content: '';
+        display: none;
+        width: 20px;
+        height: 20px;
+        border-radius: 0;
+        box-sizing: border-box;
+        mask-image: url('@design/icon/icon_icon_check@2x.png');
+        mask-repeat: no-repeat;
+        mask-position: center;
+        mask-size: contain;
+        background-color: var(--c-07-neutral-neutral-50);
+      }
+      &:hover:before {
+        border-color: var(--c-07-neutral-neutral-400);
+      }
+    }
+    &:checked {
+      & ~ .el-checkbox-style {
+        &:before {
+          border-color: var(--c-01-primary-primary-0-500);
+          background-color: var(--c-01-primary-primary-0-500);
+        }
+        &:after {
+          display: block;
+        }
+      }
+      &[disabled] {
+        & ~ .el-checkbox-style {
+          &:before {
+            border-color: var(--c-01-primary-primary-300);
+            background-color: var(--c-01-primary-primary-300);
+          }
+        }
+      }
+    }
+    &[disabled] {
+      cursor: not-allowed;
+      & ~ .el-checkbox-style {
+        cursor: not-allowed;
+        &:hover,
+        &:before,
+        &:after {
+          cursor: not-allowed;
+        }
+        &:after {
+          background-color: var(--c-09-white-white-50);
+        }
+        &:before {
+          border-color: var(--c-07-neutral-neutral-300);
+          background-color: var(--c-07-neutral-neutral-100);
+        }
+      }
+    }
+    & ~ .el-checkbox-label {
+      margin-left: $space-sm;
+    }
+  }
+  .el-checkbox-label {
+    color: var(--brand-color-secondary-default);
+  }
+  & ~ .el-checkbox-label {
+    margin-left: $space-sm;
+  }
+}

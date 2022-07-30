@@ -1,0 +1,72 @@
+.avatar {
+  padding-bottom: $space-lg;
+  &__wrap {
+    width: 96px;
+    height: 96px;
+    margin: auto;
+    position: relative;
+    cursor: pointer;
+    &.-show {
+      .camera__menu {
+        transform: scale(1);
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+  &__img {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    flex: none;
+    background-image: url('@design/image/avatars_photo@2x.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border-radius: $bod-circle;
+    overflow: hidden;
+  }
+}
+.camera {
+  $camera-img-w: 32px;
+  $camera-img-h: $camera-img-w;
+  position: relative;
+  z-index: 1;
+  &__img {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: $camera-img-w;
+    height: $camera-img-h;
+    background-color: var(--c-01-primary-primary-0-500);
+    border-radius: $bod-circle;
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--c-07-neutral-neutral-50);
+    &::before {
+      content: '';
+      display: block;
+      width: 16px;
+      height: 16px;
+      mask-image: url('@design/icon/icon_icon_devices_camera@2x.png');
+      mask-repeat: no-repeat;
+      mask-position: center;
+      mask-size: contain;
+
+      background-color: var(--c-09-white-white);
+    }
+  }
+  &__menu {
+    position: absolute;
+    left: calc(100% - (#{$camera-img-w} / 2));
+    top: -16px;
+    width: 148px;
+    transform: scale(0);
+    transition: 0.15s;
+    transform-origin: top left;
+    opacity: 0;
+    visibility: hidden;
+  }
+}

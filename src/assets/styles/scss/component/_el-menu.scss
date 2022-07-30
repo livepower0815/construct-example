@@ -1,0 +1,94 @@
+.el-menu {
+  position: absolute;
+  width: 120px;
+  transform: scale(0);
+  transition: 0.15s;
+  opacity: 0;
+  visibility: hidden;
+  &.-show {
+    transform: scale(1);
+    opacity: 1;
+    visibility: visible;
+  }
+}
+.menu-list {
+  background-color: var(--c-07-neutral-neutral-700);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: calc($bod-default / 2);
+  box-shadow: 0 8px 16px -1px var(--c-08-black-black-25), 0 2px 4px -1px var(--c-08-black-black-10);
+  overflow-y: auto;
+  overflow-x: hidden;
+  &__item {
+    padding: $space-md $space-lg;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    cursor: pointer;
+    transition: .1s;
+    & + & {
+      border-top: 1px solid var(--c-09-white-white-10);
+    }
+    &:hover {
+      background-color:var(--c-07-neutral-neutral-600);
+    }
+    .menu-text {
+      font-size: 14px;
+      color: var(--c-09-white-white);
+      margin: 0;
+      line-height: 20px;
+      font-weight: 600;
+      flex: 1;
+    }
+    .menu-icon {
+      width: 24px;
+      height: 24px;
+      flex: none;
+      mask-repeat: no-repeat;
+      mask-size: contain;
+      mask-position: center;
+      background-color: var(--c-09-white-white);
+      & + .menu-text {
+        padding-left: $space-sm;
+      }
+      &.-icon-camera {
+        mask-image: url('@design/icon/icon_icon_devices_camera@2x.png');
+      }
+      &.-icon-img {
+        mask-image: url('@design/icon/icon_icon_picture_fill@2x.png');
+      }
+      &.-icon-mute {
+        mask-image: url('@design/icon/icon_icon_voice_cancel@2x.png');
+      }
+      &.-icon-sound {
+        mask-image: url('@design/icon/icon_icon_voice@2x.png');
+      }
+      //删除
+      &.-icon-trash {
+        mask-image: url('@design/icon/icon_icon_delete@2x.png');
+      }
+      //重传
+      &.-icon-resend {
+        mask-image: url('@design/icon/icon_icon_retry@2x.png');
+      }
+      //复制
+      &.-icon-copy {
+        mask-image: url('@design/icon/icon_icon_fill@2x.png');
+      }
+      //回覆
+      &.-icon-reply {
+        mask-image: url('@design/icon/icon_icon_arrow_reply@2x.png');
+      }
+      //设为公告
+      &.-icon-announcement {
+        mask-image: url('@design/icon/icon_icon_announcement@2x.png');
+      }
+      //撤回
+      &.-icon-retract {
+        mask-image: url('@design/icon/icon_icon_retract@2x.png');
+      }
+    }
+  }
+}

@@ -1,0 +1,67 @@
+.el-message {
+  display: flex;
+  align-items: flex-start;
+  padding: $space-lg;
+  border-radius: $bod-default;
+  min-height: 56px;
+  position: fixed;
+  top: $space-lg;
+  left: $space-lg;
+  right: $space-lg;
+  max-width: calc(100% - 32px);
+  margin: auto;
+  z-index: 2;
+  width: fit-content;
+  transition: opacity .3s, transform .4s, top .4s;
+  &__img {
+    width: 24px;
+    height: 24px;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    flex: none;
+    & ~ .el-message__text {
+      padding-left: $space-lg;
+    }
+  }
+  &__text {
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0;
+    word-break: break-all;
+    margin-right: 0;
+    padding-top: 3px;
+    text-align: left;
+    font-weight: 500;
+    &:not(:last-child) {
+      margin-right: $space-lg;
+    }
+  }
+  &__close {
+    margin-left: auto;
+    width: 24px;
+    height: 24px;
+    mask-image: url('@design/icon/icon_icon_actions_cancel@2x.png');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    flex: none;
+    cursor: pointer;
+  }
+  &.-danger {
+    background-color: var(--c-06-danger-danger-100);
+    .el-message {
+      &__img {
+        mask-image: url('@design/icon/icon_icon_actions_info@2x.png');
+        background-color: var(--c-06-danger-danger-400);
+      }
+      &__text {
+        color: var(--c-06-danger-danger-700);
+      }
+      &__close {
+        background-color: var(--c-06-danger-danger-700);
+      }
+    }
+  }
+  
+}

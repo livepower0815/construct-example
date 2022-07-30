@@ -1,0 +1,55 @@
+.toast {
+  @include position-v(0, 0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1900;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.15s;
+  &.-show {
+    opacity: 1;
+    visibility: visible;
+  }
+  &__body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--c-08-black-black-75);
+    width: 212px;
+    min-height: 192px;
+    border-radius: calc(#{$bod-default} / 2);
+    padding: $space-sm $space-lg;
+    overflow: hidden;
+    word-break: break-all;
+  }
+  &__icon {
+    &__img {
+      width: 72px;
+      height: 72px;
+      mask-repeat: no-repeat;
+      mask-position: center;
+      mask-size: contain;
+      background-color: var(--c-07-neutral-neutral-200);
+
+      &.-success {
+        mask-image: url('@design/icon/icon_icon_actions_checkmark_circle@2x.png');
+      }
+      &.-error {
+        mask-image: url('@design/icon/icon_icon_alert_error@2x.png');
+      }
+    }
+    &:not(:last-child) {
+      padding-bottom: $space-sm;
+    }
+  }
+  &__text {
+    font-size: 16px;
+    line-height: 28px;
+    font-weight: 600;
+    color: var(--c-09-white-white);
+    margin: 0;
+  }
+}
